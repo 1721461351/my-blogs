@@ -8,6 +8,14 @@ Vue.config.productionTip = false
 
 // 使用vueResource
 Vue.use(vueResource)
+
+
+Vue.directive('rainbox',{
+  bind(el,binding,vnode){
+    el.style.color="#"+Math.random().toString(16).slice(2,8)
+    console.log(Math.random().toString().slice(0,6))
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
