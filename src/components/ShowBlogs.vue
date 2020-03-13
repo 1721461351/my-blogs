@@ -3,7 +3,10 @@
     <h1>博客列表</h1>
     <input type="text" placeholder="搜索" v-model="searchContent" />
     <div v-for="(blog,index) in filterBlogs" :key="index" id="single-blog">
+      <!-- 添加路由参数，跳转到详情界面 -->
+      <router-link v-bind:to="'/blog/'+blog.id">
       <h3 v-rainbox>{{blog.title | toUppercase}}</h3>
+      </router-link>
       <article>{{blog.body | omit}}</article>
     </div>
   </div>
@@ -20,10 +23,12 @@ export default {
   },
   computed: {
     filterBlogs: function() {
-                  var content = this.searchContent;
+        // 如果在下面定义this.searchContent，会找不到，此this非彼this
+      var content = this.searchContent;
+    //   这里需要搜索内容返回去
       return this.blogs.filter(function(blog) {
-          console.log("blog:"+blog.title)
-          console.log("content:"+content)
+        console.log("blog:" + blog.title);
+        console.log("content:" + content);
         return blog.title.match(content);
       });
     }

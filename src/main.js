@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import vueResource from 'vue-resource'
+import VueRouter from 'vue-router'
 Vue.config.productionTip = false
 
 // 使用vueResource
@@ -35,6 +36,14 @@ Vue.filter('omit',(value)=>{
   console.log('value:'+value)
   return value.slice(0,100)+'...';
 })
+
+
+// 创建路由
+// 如果不想在地址上显示#，可以使用下面的mode
+// const myrouter = new VueRouter({
+//   routes:router,
+//   mode:"history"
+// })
 new Vue({
   el: '#app',
   router,
